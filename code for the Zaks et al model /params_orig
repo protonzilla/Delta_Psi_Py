@@ -1,0 +1,144 @@
+%this is a list of parameters for the npq simulation file npqevolveVN (currently Version Number 10)
+%the parameters should be listed in 2 columns separated by whitespace, with the name of the parameter
+% in the first column and the value of the parameter in the second columen. The parameters can be either straight numbers,
+%or expressed in floating point notatin as, for example, 1e3 which will get parsed to 1000;
+%comments are denoted by the '%'
+%the order of the comments listed here does not matter. They are addressed by name, and not by their position in the file.
+
+%parameters for light harvesting following Belyaeva, 2008 photosynthsis research
+crosssection                 .25      %0.25 from Belyaeva et al: 0.2 excitations/second corresponds to 0.8 microeinsteins  u
+
+kEETLHP680QAox                 5e9   u   %5e9 eef 3.2e10  Belyaeva 2,9, 16, 29   , energy transfer and charge separation from Excited Chlorophyll to rC
+kEETLHP680QAred                0.85e9   u % from Li 2002 PNAS 3.2e10  Belyaeva 2,9, 16, 29   , energy transfer and charge separation from Excited Chlorophyll to rC
+kQ                             3e9  u
+PsbSDose                      0.6   u  %should probably be 0.6     
+
+kEETLHP680revQAox              1e10   u   %Energy transfer from excited P680 back into Light Harvesting Antenna
+kEETLHP680revQAred             1e10   u %Energy transfer from excited P680 back into Light Harvesting Antenna
+kQuenchDamage           0    u  % 1.7e9 energy transfer to damaged RC that is in a quenching configuration, where this energy is dissipated
+
+
+
+kF                             6e7   u    % fluorescence default 6.7e7
+kNRantenna                     1e8   u %e8      %default  2.8e8 %include 2e8 heat dissipative loss as well
+kquenchP680plus               .5e9   u   %1.4e9 =P*8e9 where P=0.175 is measure of connectivity of PSIIs; Quenching by P680+
+kNRP680                       .1e9   u   %1e9 default rate of intersystem crossing from P680 to triplet
+
+
+alphaRC                             0.4  u  % 0.4 Belyaeva 2008
+alphaQ                              .1   u    %0.1
+kETP680PheOpenRC                    3e12  u   %1e12electron transfer between P680 and Pheophytin, oxidized QA
+kETP680PheClosedRC                   1e10  u   %1e11 electron transfer between P680 and Pheophytin, reduced QA
+kETPheToQA                           3e9   u   %3e9Belyaeva rates 3,10, 17,30 
+kETWaterOxidation                    3e7   u   %Belyaeva rates 4,11, 18, 31 6e7
+kP680Pherecombination                5e8   u   %belyaeva rates 42-45 default 5e8
+kP680QArecombinationClosedRC         5.8e2   u %belyaeva rates 42-45 default 5e8
+kP680QArecombination                 30     u  % reverse of 3, 10, 17, 30
+
+
+kETQAtoQB1              5e3   u    %3.5e3  belyaeva 2008 table 1 defautlt 3.5e3 rate 7
+kETQB1toQA              5e2   u    % 3.5e2 seems to be very important-but in rate 7 reverse
+kETQAtoQB2              1.7e3   u  %1.6e3belyaeva 2008 table 1 rate 14
+kETQB2toQA              1.7e3   u       %default 1.6e3 belyaeva 2008 table 1 rate 14 reverse
+PQH2undock              8e2    u     % 8e2 belyaeva 2008 table 1 rate 21-27
+QReoxidationRate        100    u     %Belyaeva 2008 uses 4 after D. Lazar 2003; Kramer uses 100
+PQdockingrate            5e2   u      %  5e2 Belyaeva rates 32-40
+QuinonePoolSize         10    u    %10 ; units are Quinones/PSII, from Belyaeva 2008 table 1, following Lazar 2003; also Lavergne in Photosynthesis in Silico
+
+%parameters for buffering
+%photonsperps2           0   u %this field needs to be defined in the program
+protonsperphoton         1  u
+pKaC                     5.8   u    %default 5.5 PkA Coefficient of Cytochrom b6f protonation
+nC                       1.2   u      %hill Coefficient of Cytochrome b6f protonation
+electronsPerNADPH        2    u
+
+pHStromaStart                7.2  u
+StromaProtonsStart          1e-10  u
+pHLumenStart                7.2   u
+bufferCapacityStroma        0.1   u   %30 mM protons/pH
+bufferCapacityLumen        0.03    u  %30 mM protons/pH
+
+
+ATPConductivity        .6e-9    u    %mol proton per volt cm^2 second changing to 1e-10 makes pH drop to below 5.5 default 1e-9
+ATPConductivityReverse 1e-10   u    % reverse conductivity 
+
+
+kATPsActivate           2.5e-1     u          
+kATPsInactivate           3e-3  u
+
+thresholdpmf            0.001  u
+leakpmf                 0.8    u  %pmf at which protons leak without ATP synthesis
+leakConductivity        1e-7   u  %conductivity with which protons leak out of lumen
+
+
+PCl                    1.8e-8   u  %cm/s default 1.8e-8, but increasing it makes everything equilibrate faster.
+PMg                     3.6e-8    u    %cm/s default 3.6e-8
+PK                    1.8e-8      u      %cm/s
+zCl                        -1    u
+zMg                         2  u
+zK                          1  u
+StromaClStart              10e-3  u
+StromaMgStart              10e-3  u             %5, 10, 30, 55, 105 mM
+StromaKStart               10e-3  u
+LumenKStart                10e-3  u
+LumenClStart               10e-3  u
+LumenMgStart               10e-3  u             %5, 10, 30, 55, 105 mM
+Rconst                     8.314  u		%UniversalGas Constant
+Fconst                      96485  u		%Faraday Constant
+Tconst                      300  u
+
+%stroma volume is 8 times lumen volume; Laisk 2006 C3 photosynthesis
+LumenVolume            6.7e-21   u %	6.7e-21 	%	liters of volume associated with 1 psII subunit  0.8 nL/cm^2 /2e-13 mol PSII/cm^2/Na
+StromaVolume             53.6e-21   u   %   53.6e-21liters of volume of stroma associated with 1 PSII subunit (100 times bigger than lumen)
+lumenVolumePerArea       8e-10      u   %8e-10 L/cm^2
+
+  
+
+MembraneCapacitance		1e-6	  u	%farads per square centimeter (0.6 microfarads per square centimeter = 6e-7 F/cm^2) %1 uF/cm^2 vredenberg
+Na                             6.022e23  u % Avogadro's number
+
+VDErateVioToAnth                     4e-2   u %maximal turnover rate of Violaxanthin deepoxidase
+VDErateAnthToZea                     4e-2  u %maximal turnover rate of Violaxanthin deepoxidase
+ZErate                               4e-4  u %maximal turnover rate of Zeaxanthin epoxidase
+TotalXanthophyll                     1   u
+VDEpKa                             6   u % 
+nVDE                                 6   u % 
+PsbSpKa                                6.4   u  % 
+nPsbS                                  3    u %
+PsbSperPSII                            1   u %
+
+
+
+
+%parameters for PSI
+
+PSIcrossSection      0.35     u     % 70 chlorophylls
+kEETP700             1.4e10    u    % PSI has 70 ps lifetime
+kETPCP700            6e3       u    % reduction of P700 by plastocyanin; Kramer and Sacksteder DIRK Photosynthesis Research 66 p 145 2000
+kETP700Fdx            4e4    u
+
+kETFdxMV                1e3 d
+kETFdxThrdx             1e3 d
+kETThrdxOx             1e2  u
+
+%Cyclic Electron Flow
+kETFdxPQ        5e-3  u
+kETNADPHPQ      1e2   u
+
+%parameters for Stroma
+ATPperPSI      600   u %Lebedeva 2002% Laisk 2006
+NADPperPSI    15  u
+PCperPSI    3      u  %laisk 2006
+ElectronsPerPC  1     u  
+
+kTurnOnATP      1e4  u
+
+
+
+    
+
+
+damageyesno                   0    u
+repairyesno                     0   u
+fracIntactRC                       1    u   
+CytRegulateYesNO        1     u   %0 means cytochrome b6f is always fully on

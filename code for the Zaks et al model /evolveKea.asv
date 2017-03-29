@@ -1,0 +1,15 @@
+function out = evolveKea( keavars,inputs,params )
+
+%% Load in the variables we'll be changing
+LumenProtons = keavars( 1,: );
+LumenK = keavars( 2,: );
+
+%% Some static variables
+StromaK = params.StromaKStart;
+StromaProtons = params.StromaProtonsStart;
+
+rate = -LumenProtons .* StromaK * 
+
+
+end
+

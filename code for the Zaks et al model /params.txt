@@ -1,0 +1,188 @@
+%this is a list of parameters for the npq simulation file chloroplastSim
+%the parameters should be listed in 2 columns separated by whitespace, with the name of the parameter
+% in the first column and the value of the parameter in the second columen. The parameters can be either straight numbers,
+%or expressed in floating point notatin as, for example, 1e3 which will get parsed to 1000;
+%comments are denoted by the '%'
+%the order of the comments listed here does not matter. They are addressed by name, and not by their position in the file.
+
+%parameters for light harvesting following Belyaeva, 2008 photosynthsis research
+crosssection                    0.25   m^2/PSII   %0.25 from Belyaeva et al: 0.2 excitations/second corresponds to 0.8 microeinsteins
+
+
+ tauqE 10.0e-12         seconds   %   tauqE is the time (1/rate) in ps of energy dissipation at a quenching site (here,
+                           %   CP29) such that, when Q = 1 and R = 0, the average lifetime is 330 ps.
+
+ tauCS  5.5e-12         seconds
+%   tauCS is the time (1/rate) of energy dissipation at the reaction center such
+%   that, when Q = 0 and R = 1, the average lifetime is 260 ps with the migration time half of
+%   the overall lifetime.  (van Oort, Biophys. J, 2010)
+
+ tF  1.5e-9   seconds
+%   tF is the inverse of the rate of nonradiative recombination in the
+%   antenna: lifetime of nonradiative recombination
+
+
+
+%%% Variables
+ tHop   17e-12  seconds  % default 17e-12 in s; time for transfer between all connected complexes
+% tRP      137e-12   %in s; time for secondary charge separation to occur,
+                   %once primary charge separation has occurred
+% deltaG   826       % in cm^-1; drop in free energy upon primary CS; determines equil.
+% kconst      0.695  % Boltzmann constant in cm^-1/K
+
+
+
+
+kEETLHP680QAox                 5e9  s^-1   %5e9 eef 3.2e10  Belyaeva 2,9, 16, 29   , energy transfer and charge separation from Excited Chlorophyll to rC
+kEETLHP680QAred                 0.85e9 s^-1  % from Li 2002 PNAS 3.2e10  Belyaeva 2,9, 16, 29   , energy transfer and charge separation from Excited Chlorophyll to rC
+%kQZea                                 2e3   s^-1    %default 3e11 %model following Belyaeva, 2008 photosynthsis research
+%kQAnth                                 2e3   s^-1     %default 3e11 %model following Belyaeva, 2008 photosynthsis research
+kQ                                    3e9 s^-1 
+
+kEETLHP680revQAox              1e10  s^-1   %Energy transfer from excited P680 back into Light Harvesting Antenna
+kEETLHP680revQAred             1e10 s^-1  %Energy transfer from excited P680 back into Light Harvesting Antenna
+
+
+
+kquenchP680plus                5e8 s^-1  % Belyaeva 2008
+
+
+kNRantenna                5e8 s^-1  % Belyaeva 2008
+kNRP680                   .1e9    s^-1 %1e9 default rate of intersystem crossing from P680 to triplet
+
+
+kQ                              3e9   s^-1
+PsbSDose                        0.6   fraction  % should probably be 0.6     
+
+kQuenchDamage                   0     s^-1  % 1.7e9 energy transfer to damaged RC that is in a quenching configuration, where this energy is dissipated
+
+kF                              7e7     s^-1     % fluorescence default 6.7e7
+
+alphaRC                              0.4  unitless   % 0.4 Belyaeva 2008
+alphaQ                               0.1  unitless % 0.1
+
+
+%% These rates shoudl determine F_0 vs F_m
+
+kETP680PheOpenRC                     3e12  s^-1  % 3e12 electron transfer between P680 and Pheophytin, oxidized QA, Raszewski and Renger
+kETP680PheClosedRC                   1e10   s^-1  % 1e11 electron transfer between P680 and Pheophytin, reduced QA, Raszewski and Renger
+kETPheToQA                           3e9   s^-1  % 3e9  Belyaeva rates 3,10, 17,30 
+kETWaterOxidation                    3e7   s^-1  % Belyaeva rates 4,11, 18, 31 6e7
+
+kP680Pherecombination                5e8 s^-1  % belyaeva rates 2,9, 16, 29 default 5e8 %Renger
+ 
+kP680PherecombinationOpenRC          2e8   s^-1  % belyaeva rates 2,9, 16, 29 default 5e8 %Renger
+kP680PherecombinationClosedRC        5e2  s^-1 % belyaeva rates 42-45 default 5e8
+
+kPheQArecombination                  5e2   s^-1 % reverse of 3, 10, 17, 30 %% Simulation seems to be very sensitive to this quantity
+
+kP680QArecombination                30 s^-1  % Belyaeva rates 46-49
+kP680QArecombinationClosedRC         5.8e2  %belyaeva rates 42-45 default 5e8
+
+
+kETQAtoQB1               3.5e3  s^-1   %  3.5e3  belyaeva 2008 table 1 defautlt 3.5e3 rate 7
+kETQB1toQA               3.5e2  s^-1   %  3.5e2 seems to be very important-but in rate 7 reverse
+kETQAtoQB2               1.6e3  s^-1   %  1.6e3belyaeva 2008 table 1 rate 14
+kETQB2toQA               1.6e3  s^-1   %  default 1.6e3 belyaeva 2008 table 1 rate 14 reverse
+PQH2undock               8e2    s^-1   %  8e2 belyaeva 2008 table 1 rate 21-27
+QReoxidationRate         100    PQH2/second   %  Belyaeva 2008 uses 4 after D. Lazar 2003; Kramer uses 100
+PQdockingrate            5e2    PQ/second     %  5e2 Belyaeva rates 32-40
+QuinonePoolSize          10      molecules/PSII  %  10 ; units are Quinones/PSII, from Belyaeva 2008 table 1, following Lazar 2003; also Lavergne in Photosynthesis in Silico
+
+%parameters for buffering
+
+pKaC                     5.8   FILLTHISIN    %default 5.5 PkA Coefficient of Cytochrom b6f protonation
+nC                       1.2   FILLTHISIN    %hill Coefficient of Cytochrome b6f protonation
+electronsPerNADPH        2  FILLTHISIN  
+
+pHStromaStart               7.2 pK
+StromaProtonsStart          1e-10 Mol 
+pHLumenStart                7.2   pK
+bufferCapacityStroma        0.1   mM/pH %100 mM protons/pH
+bufferCapacityLumen         0.03  mM/pH  %30 mM protons/pH This parameter aff
+
+
+ATPConductivity            .6e-9      molProton/(volt*cm^2*second) %changing to 1e-10 makes pH drop to below 5.5 default 1e-9
+ATPConductivityReverse      1e-10     molProton/(volt*cm^2*second) % reverse conductivity 
+
+
+kATPsActivate               2.5e-1  fillThisIN %default 2.5e-1             
+kATPsInactivate             3e-3  fillThisIN 
+
+thresholdpmf                0.001  Volts
+leakpmf                     0.8    Volts %pmf at which protons leak without ATP synthesis
+leakConductivity            1e-7   fillThisIN   %conductivity with which protons leak out of lumen
+ 
+
+PCl                         1.8e-8   cm/s %default 1.8e-8, but increasing it makes everything equilibrate faster.
+PMg                         3.6e-8   cm/s % default 3.6e-8
+PK                          1.8e-8   cm/s      % default 1.8e-8 cm/s
+zCl                        -1        Charges
+zMg                         2        Charges
+zK                          1         Charges
+StromaClStart              10e-3      mM
+StromaMgStart              10e-3      mM       %5, 10, 30, 55, 105 mM
+StromaKStart               10e-3      mM
+LumenKStart                10e-3      mM
+LumenClStart               10e-3      mM
+LumenMgStart               10e-3      mM       %5, 10, 30, 55, 105 mM
+Rconst                     8.314	Fillthisin	%UniversalGas Constant
+Fconst                      96485	fillthisin	%Faraday Constant
+Tconst                      300     Kelvin
+
+%stroma volume is 8 times lumen volume; Laisk 2006 C3 photosynthesis
+LumenVolume            6.7e-21       Liters   %	6.7e-21 	%	liters of volume associated with 1 psII subunit  0.8 nL/cm^2 /2e-13 mol PSII/cm^2/Na
+StromaVolume             53.6e-21    Liters   %   53.6e-21liters of volume of stroma associated with 1 PSII subunit (100 times bigger than lumen)
+lumenVolumePerArea       8e-10       Liters/cm^2    % 8e-10 L/cm^2
+
+  
+
+MembraneCapacitance		1e-6		Farad/cm^2 %farads per square centimeter (0.6 microfarads per square centimeter = 6e-7 F/cm^2) %1 uF/cm^2 vredenberg
+Na                             6.022e23 thingsPerMol % Avogadro's number
+
+VDErateVioToAnth                     4e-2 pigments/s^-1 %maximal turnover rate of Violaxanthin deepoxidase
+VDErateAnthToZea                     2e-2 pigments/s^-1 %maximal turnover rate of Violaxanthin deepoxidase
+ZErate                               4e-4 pigments/s^-1 %maximal turnover rate of Zeaxanthin epoxidase
+TotalXanthophyll                     1    Fraction
+VDEpKa                               6    pK % 
+nVDE                                 6    hill % 
+PsbSpKa                                6.4 pK  % 
+nPsbS                                  3   hill %
+PsbSperPSII                            1   PsbS/PSII %
+zfrac                                  0.8  Fraction %Fraction of quenching sites due to zeaxanthin
+PsbSConvertRate                        1e-1 ActiveQ/(ActivePsbS*PSII)   %rate of PsbS-induced conformational change
+
+
+
+%parameters for PSI
+
+PSIcrossSection       0.35      m^2  % 70 chlorophylls
+kEETP700              1.4e10    s^-1  % PSI has 70 ps lifetime
+kETPCP700             6e3        FILLTHISIN % reduction of P700 by plastocyanin; Kramer and Sacksteder DIRK Photosynthesis Research 66 p 145 2000
+kETP700Fdx            1e1       FILLTHISIN
+
+kETFdxMV                1e3   FILLTHISIN
+kETFdxThrdx             1e3   FILLTHISIN
+kETThrdxOx              1e2   FILLTHISIN
+
+%Cyclic Electron Flow
+kETFdxPQ        5e-3
+kETNADPHPQ      1e2 
+
+%parameters for Stroma
+ATPperPSI      600 ATP/PSI  %Lebedeva 2002% Laisk 2006
+NADPperPSI    15   NADP/PSI
+PCperPSI    3      PC/PSI %laisk 2006
+ElectronsPerPC  1     ratio
+
+% kTurnOnATP      1e4 s^-1
+
+
+
+    
+
+
+damageyesno              0      bool
+repairyesno              0      bool
+fracIntactRC             1      bool
+CytRegulateYesNO         1      bool %0 means cytochrome b6f is always fully on
