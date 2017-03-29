@@ -11,7 +11,7 @@ New python users should consider installing **[Anaconda]** which includes both t
 Install using pip in the terminal.
 
 ```bash
-pip install git+https://github.com/tessmero/Delta-Psi-Py.git --upgrade --no-cache-dir
+pip install git+https://github.com/protonzilla/Delta_Psi_Py.git --upgrade --no-cache-dir
 ```
 
 
