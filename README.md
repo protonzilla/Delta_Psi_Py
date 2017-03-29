@@ -19,7 +19,7 @@ pip install git+https://github.com/protonzilla/Delta_Psi_Py.git --upgrade --no-c
 
 See **[the example notebook](example_with_verbose_plot.ipynb)** which can be downloaded and run/modified using **[Jupyter]**.
 
-See **[See Supplemental Information from submitted paper](RS_Supplemental_Information.ipynb)** which can be downloaded and run/modified using **[Jupyter]**.
+See **[supplemental information from submitted paper](RS_Supplemental_Information.ipynb)** which can be downloaded and run/modified using **[Jupyter]**.
 
 
 ### Static and slowly-changing parameters
