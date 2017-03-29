@@ -18,7 +18,8 @@ pip install git+https://github.com/tessmero/Delta-Psi-Py.git --upgrade --no-cach
 ### Getting Started
 
 See **[the example notebook](example_with_verbose_plot.ipynb)** which can be downloaded and run/modified using **[Jupyter]**.
-See **[Supplemental Information from submitted paper](RS_Supplemental_Information_Delta_Psi_Py_RS_paper_5_submitted_figures (1).ipynb)** which can be downloaded and run/modified using **[Jupyter]**.
+
+See **[See Supplemental Information from submitted paper](RS_Supplemental_Information.ipynb)** which can be downloaded and run/modified using **[Jupyter]**.
 
 
 ### Static and slowly-changing parameters
