@@ -2176,7 +2176,8 @@ def plot_pmf_params_offset(output, use_x_axis, x_axis_label, global_min, global_
     a3.data_label='pmf'
     a3.axis_color='black'
     a3.marker_color='green'
-    a3.linestyle='solid'
+    a3.linewidth=1.5
+    a3.linestyle='dashed'
     a3.subtract_baseline=sub_base
     a3.maxmin_y=[all_min, all_max]
 
