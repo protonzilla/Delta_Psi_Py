@@ -126,7 +126,7 @@ def generate_sin_based_light_sequence (total_duration, time_units, max_PAR,
 
     total_duration_in_seconds=total_duration*time_div
     test_number_points=total_duration_in_seconds*point_frequency
-    test_times_array=np.linspace(0, total_duration_in_seconds, test_number_points, dtype=float)
+    test_times_array=np.linspace(0.0, int(total_duration_in_seconds), int(test_number_points), dtype=float)
 
     #make the full waveform at high resolution
     test_sin_light_list=[]
@@ -167,8 +167,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
 
     baseline_duration=baseline_duration*time_div
     baseline_points=baseline_duration*point_frequency
-    baseline_time=np.linspace(0, baseline_duration, baseline_points)
-    baseline_intensity_array= np.linspace(baseline_intensity, baseline_intensity,baseline_points)
+    baseline_time=np.linspace(0.0, int(baseline_duration), int(baseline_points))
+    baseline_intensity_array=np.linspace(int(baseline_intensity), int(baseline_intensity),int(baseline_points))
     pulse_times=np.append(pulse_times, baseline_time)
     pulse_light=np.append(pulse_light, baseline_intensity_array)
 
@@ -176,8 +176,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
     riser_points=riser_duration*point_frequency
     riser_start_time = (baseline_points+1) / point_frequency
     riser_end_time = riser_start_time + riser_duration
-    riser_time=np.linspace(riser_start_time, riser_end_time, riser_points)
-    riser_light=np.linspace(baseline_intensity, pulse_intensity, riser_points)
+    riser_time=np.linspace(int(riser_start_time), int(riser_end_time), int(riser_points))
+    riser_light=np.linspace(int(baseline_intensity), int(pulse_intensity), int(riser_points))
     
     pulse_times=np.append(pulse_times, riser_time)
     pulse_light=np.append(pulse_light, riser_light)
@@ -185,8 +185,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
     pulse_points=pulse_duration*point_frequency
     pulse_start_time = (baseline_points + riser_points +1)/point_frequency
     pulse_end_time = pulse_start_time + pulse_duration
-    pulse_time=np.linspace(pulse_start_time, pulse_end_time, pulse_points)
-    pulse_light_array=np.linspace(pulse_intensity, pulse_intensity, pulse_points)
+    pulse_time=np.linspace(int(pulse_start_time), int(pulse_end_time), int(pulse_points))
+    pulse_light_array=np.linspace(int(pulse_intensity), int(pulse_intensity), int(pulse_points))
     pulse_times=np.append(pulse_times, pulse_time)
     pulse_light=np.append(pulse_light, pulse_light_array)
     
@@ -194,8 +194,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
     falling_points=riser_duration*point_frequency
     falling_start_time = (baseline_points + riser_points + pulse_points + 1) / point_frequency
     falling_end_time = falling_start_time + falling_duration
-    falling_time=np.linspace(falling_start_time, falling_end_time, falling_points)
-    falling_light=np.linspace(pulse_intensity, recovery_intensity, falling_points)
+    falling_time=np.linspace(int(falling_start_time), int(falling_end_time), int(falling_points))
+    falling_light=np.linspace(int(pulse_intensity), int(recovery_intensity), int(falling_points))
     
     pulse_times=np.append(pulse_times, falling_time)
     pulse_light=np.append(pulse_light, falling_light)
@@ -204,8 +204,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
     recovery_points=recovery_duration*point_frequency
     recovery_start_time = (baseline_points + riser_points + pulse_points + falling_points + 1) / point_frequency
     recovery_end_time = recovery_start_time + recovery_duration
-    recovery_time=np.linspace(recovery_start_time, recovery_end_time, recovery_points)
-    recovery_light=np.linspace(recovery_intensity, recovery_intensity, recovery_points)
+    recovery_time=np.linspace(int(recovery_start_time), int(recovery_end_time), int(recovery_points))
+    recovery_light=np.linspace(int(recovery_intensity), int(recovery_intensity), int(recovery_points))
 
     pulse_times=np.append(pulse_times, recovery_time)
     pulse_light=np.append(pulse_light, recovery_light)
@@ -278,8 +278,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
 
     baseline_duration=baseline_duration*time_div
     baseline_points=baseline_duration*point_frequency #calculate the number of points in the baseline
-    baseline_time=np.linspace(0, baseline_duration, baseline_points) #generate the baseline array, starting at zero
-    baseline_intensity_array= np.linspace(baseline_intensity, baseline_intensity,baseline_points) #fill baseline array with baseline light intensity
+    baseline_time=np.linspace(0.0, int(baseline_duration), int(baseline_points)) #generate the baseline array, starting at zero
+    baseline_intensity_array= np.linspace(int(baseline_intensity), int(baseline_intensity),int(baseline_points)) #fill baseline array with baseline light intensity
 
     pulse_times=np.append(pulse_times, baseline_time) 
     pulse_light=np.append(pulse_light, baseline_intensity_array)
@@ -289,8 +289,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
     riser_start_time = (baseline_points+1) / point_frequency
     
     riser_end_time = riser_start_time + riser_duration
-    riser_time=np.linspace(riser_start_time, riser_end_time, riser_points)
-    riser_light=np.linspace(baseline_intensity, pulse_intensity, riser_points)
+    riser_time=np.linspace(int(riser_start_time), int(riser_end_time), int(riser_points))
+    riser_light=np.linspace(int(baseline_intensity), int(pulse_intensity), int(riser_points))
     #print('rst= ' + str(riser_start_time))
     #print('ret= ' + str(riser_end_time))
     
@@ -309,8 +309,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
     #print('pet= ' + str(pulse_end_time))
 
 
-    pulse_time=np.linspace(pulse_start_time, pulse_end_time, pulse_points)
-    pulse_light_array=np.linspace(pulse_intensity, pulse_intensity, pulse_points)
+    pulse_time=np.linspace(int(pulse_start_time), int(pulse_end_time), int(pulse_points))
+    pulse_light_array=np.linspace(int(pulse_intensity), int(pulse_intensity), int(pulse_points))
     pulse_times=np.append(pulse_times, pulse_time)
     pulse_light=np.append(pulse_light, pulse_light_array)
     
@@ -326,8 +326,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
     #print('fet= ' + str(falling_end_time))
 
 
-    falling_time=np.linspace(falling_start_time, falling_end_time, falling_points)
-    falling_light=np.linspace(pulse_intensity, recovery_intensity, falling_points)
+    falling_time=np.linspace(int(falling_start_time), int(falling_end_time), int(falling_points))
+    falling_light=np.linspace(int(pulse_intensity), int(recovery_intensity), int(falling_points))
     
     pulse_times=np.append(pulse_times, falling_time)
     pulse_light=np.append(pulse_light, falling_light)
@@ -338,8 +338,8 @@ def generate_square_wave_based_light_sequence (baseline_duration, baseline_inten
     recovery_end_time = recovery_start_time + recovery_duration
     
 
-    recovery_time=np.linspace(recovery_start_time, recovery_end_time, recovery_points)
-    recovery_light=np.linspace(recovery_intensity, recovery_intensity, recovery_points)
+    recovery_time=np.linspace(int(recovery_start_time), int(recovery_end_time), int(recovery_points))
+    recovery_light=np.linspace(int(recovery_intensity), int(recovery_intensity), int(recovery_points))
 
     pulse_times=np.append(pulse_times, recovery_time)
     pulse_light=np.append(pulse_light, recovery_light)
@@ -361,16 +361,14 @@ def smooth(yvals, box_pts):
     
 def flat_light(day_length_h, PAR, points_per_second):
     day_length_s=day_length_h*60*60
-    time_axis_s=np.linspace(0,day_length_s, day_length_s*points_per_second)
-    flat_envelope=np.linspace(PAR,PAR, day_length_s*points_per_second)
+    time_axis_s=np.linspace(0.0,int(day_length_s), int(day_length_s*points_per_second))
+    flat_envelope=np.linspace(int(PAR),int(PAR), int(day_length_s*points_per_second))
     return(time_axis_s, flat_envelope)
 
 def sin_light(day_length, max_PAR, points_per_second): 
     
     day_length_s=day_length*60*60
-    time_axis_s = np.linspace(0, day_length_s, day_length_s*points_per_second, endpoint=False)
-    time_axis_h=time_axis_s/(60*60)
-    
+    time_axis_s = np.linspace(0.0, int(day_length_s), int(day_length_s*points_per_second), endpoint=False)
     #generate the envelope trace
     envelope=signal.cosine(day_length_s*points_per_second)*max_PAR
     return([time_axis_s, envelope])
@@ -380,7 +378,6 @@ def generate_light_profile(input_envelope, fluctuations):
     time_axis_s=input_envelope[0]
     day_length_s=time_axis_s[-1]
     points_per_second=len(time_axis_s)/day_length_s
-    time_axis_h=time_axis_s/(60*60)
     envelope=input_envelope[1]
     
     light_fluct=np.array([])
@@ -405,11 +402,11 @@ def generate_light_profile(input_envelope, fluctuations):
                 if (time_index>start_point-1) and (time_index<end_point+1):
                     fluctuation_amplitude=np.random.uniform(float(fluctuations['amplitude'][0]), float(fluctuations['amplitude'][1]))
                     light_value=envelope[len(light_fluct)]*(1-fluctuation_amplitude)
-                    light_fluct=np.append(light_fluct, np.linspace(fluctuation_amplitude, fluctuation_amplitude, (duration_of_fluctuation*points_per_second)))
-                    light_array=np.append(light_array, np.linspace(light_value, light_value, (duration_of_fluctuation*points_per_second)))
+                    light_fluct=np.append(light_fluct, np.linspace(int(fluctuation_amplitude), int(fluctuation_amplitude), int((duration_of_fluctuation*points_per_second))))
+                    light_array=np.append(light_array, np.linspace(int(light_value), int(light_value), int((duration_of_fluctuation*points_per_second))))
 
                 else:
-                    light_fluct=np.append(light_fluct, np.linspace(0, 0, (duration_of_fluctuation*points_per_second)))
+                    light_fluct=np.append(light_fluct, np.linspace(0.0, 0.0, int((duration_of_fluctuation*points_per_second))))
                     light_array=np.append(light_array, envelope[time_index:time_index+int(duration_of_fluctuation*points_per_second)])
 
                     #light_value = envelope[len(light_fluct)]
@@ -600,14 +597,14 @@ def optimized_time_split(test_times_and_light, max_light_change, points_per_segm
     for ii in range(1,len(split_points)):
         ptre=split_points[ii]
         ptrb=split_points[ii-1]
-        temp_x=np.linspace(test_times_array[ptrb], test_times_array[ptre], points_per_segment)
+        temp_x=np.linspace(int(test_times_array[ptrb]), int(test_times_array[ptre]), int(points_per_segment))
         #average_light=np.mean(test_light[ptrb:ptre])    #at first, I used the average light intensity over the 
                                                         #entire subtrace, but this was a bad idea because if the 
                                                         #trace was short, it could result in setting the dark baseline
                                                         #to something above zero!
         beginning_light=test_light[ptrb]
         use_this_light=beginning_light
-        temp_y=np.linspace(use_this_light, use_this_light, points_per_segment)
+        temp_y=np.linspace(int(use_this_light), int(use_this_light), int(points_per_segment))
         sub_arrays_time.append(temp_x)
         sub_arrays_light.append(temp_y)
     #print('sub_arrays, split_points = ' + str(len(sub_arrays_light)) + ' ' + str(len(split_points)))
@@ -633,14 +630,14 @@ def make_variable_light_constants_set_and_trace_times(K, sub_arrays_time_and_lig
         constants_set.append(K.as_tuple())
         duration=sub_arrays_time[i][-1]-sub_arrays_time[i][0]
         number_of_steps=len(sub_arrays_time[i])
-        trace_times.append(np.linspace(0, duration, number_of_steps)) 
+        trace_times.append(np.linspace(0.0, int(duration), int(number_of_steps)))
 
     #print('there are ' + str(len(constants_set)) + ' subsets in this trace')
     return([constants_set, trace_times])
 
 def generate_sin_wave(total_duration, max_PAR, light_frequency, points_per_second):
     test_number_points=total_duration*points_per_second
-    times_array=np.linspace(0, total_duration, test_number_points, dtype=float)
+    times_array=np.linspace(0.0, int(total_duration), int(test_number_points), dtype=float)
     sin_wave=[]
     #print('length of test array is: ' + str(len(times_array)))
     for i in times_array:
